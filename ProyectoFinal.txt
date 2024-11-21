@@ -1,0 +1,28 @@
+aqui podremos poner notas y asi
+tipo de lista: LSEA
+el proyecto es un club
+
+usaremos membresias con lo siguiente al menos (minimo 10):
+  número, nombre, fecha de contratación, costo, tipo, 
+  servicios que incluye, etc
+
+El Sistema deberá realizar validaciones a los datos 
+(mínimo 4 campos validados) en la operación AGREGAR nuevos 
+datos al sistema. Ejemplo: No aceptar fechas inválidas, 
+tampoco precios de productos negativos, etc.
+
+El Sistema deberá utilizar nuevas funciones de biblioteca 
+que no se hayan usado nunca en clase, esto es, deberán 
+investigar e incorporar mínimo 6 funciones adicionales 
+diferentes (documentar las funciones incorporadas al 
+inicio del programa).
+
+1. Agregar uno nuevo al sistema (en listas abiertas: al inicio y final)
+2. Eliminar uno del sistema (en listas abiertas: al inicio y final)
+3. Consultar la lista en memoria (mostrar todos los elementos)
+4. Filtrar por un dato numérico (rango, mostrar todos los que cumplan con la condición)
+5. Buscar por un dato cadena (mostrar uno sólo y regresar)
+6. Guardar los datos en la lista en un archivo (respaldo)
+7. Recuperar los datos del archivo (mostrar en pantalla lo almacenado en el archivo)
+8. Ordenar los elementos de la lista por un dato específico (método ordenamiento)
+0. Salir

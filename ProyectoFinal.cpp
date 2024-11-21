@@ -32,7 +32,7 @@ struct membresia {
 //* operaciones de LSEA
 void agregarInicio();
 void consultarLista();
-void buscarTitulo();
+void buscarNombre();
 void agregarFinal();
 void eliminarFinal();
 void agregarSegundo();
@@ -63,7 +63,7 @@ int main(void) {
             consultarLista();
             break;
         case 3:
-            buscarTitulo();
+            buscarNombre();
             break;
         case 4:
             agregarFinal();
@@ -227,7 +227,7 @@ void consultarLista() {
 
 //! buscarTitulo()
 //! ==============================================================
-void buscarTitulo() {
+void buscarNombre() {
 
     return;
 } // buscarTitulo()
@@ -281,9 +281,9 @@ void menu(void) {
     cout << endl << endl;
     cout << "Listado de mis videojuegos favoritos" << endl;
     cout << "====================================" << endl;
-    cout << "1. Agregar un videojuego al inicio de la lista" << endl;
-    cout << "2. Consultar mi listado de videojuegos" << endl;
-    cout << "3. Buscar un videojuego por su tipo" << endl;
+    cout << "1. Agregar un miembro al inicio de la lista" << endl; //corregido
+    cout << "2. Consultar el listado de miembros" << endl;  //corregido
+    cout << "3. Buscar a un miembro por su nombre" << endl; // corregido
     cout << "4. Agregar un videojuego al final de la lista" << endl;
     cout << "5. Eliminar el videojuego al final de la lista" << endl;
     cout << "6. Agregar un videojuego en la segunda posicion dela lista" << endl;

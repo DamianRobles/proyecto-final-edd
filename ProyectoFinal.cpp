@@ -18,7 +18,7 @@ struct membresia {
     char nombre[99];
     char fechaContrat[20];
     float costo;
-    char tipo[5];
+    int tipo;
     char servicios[99];
     // Los otros cuatro datos propuestos:
     char telefono[11];
@@ -110,36 +110,38 @@ void agregarInicio() {
         cout << "No se tiene memoria suficiente" << endl;
     } // if
 
-    // 4) guardar los datos del nuevo videojuego
+    // 4) guardar los datos del nuevo miembro
     cout << endl << endl;
-    cout << "Ingresa los datos del nuevo miembro" << endl;
+    cout << "   Ingresa los datos del nuevo miembro:" << endl << endl;
 
+    // Número del miembro
     cout << "Numero del miembro: ";
     cin >> apNuevo->numero;
+    cin.ignore(); // Limpiar el buffer tras un cin>> para evitar conflictos
 
+    // Datos personales
     cout << "Nombre completo del miembro: ";
-    cin.ignore();
     cin.getline(apNuevo->nombre, 99, '\n');
+    cout << "Edad del miembro: ";
+    cin >> apNuevo->edad;
+    cin.ignore(); // Limpiar buffer antes de getline
+    cout << "Telefono del miembro: ";
+    cin.getline(apNuevo->telefono, 11, '\n');
+    cout << "Correo del miembro: ";
+    cin.getline(apNuevo->correo, 51, '\n');
 
-    cout << "Fecha del contrado: ";
-    cin.ignore();
+    // Datos de la membresía
+    cout << "Fecha del contrato: ";
     cin.getline(apNuevo->fechaContrat, 30, '\n');
-
     cout << "Costo de la mensualidad: ";
-    cin >> apNuevo->costo
+    cin >> apNuevo->costo;
+    cout << "Seleccionar el tipo de la membresia (1- Plata  2- Oro  3- Platino): ";
+    cin >> apNuevo->tipo;
+    cin.ignore(); // Limpieza del buffer tras cin>>
 
-
-
-
-    cout << "Titulo: ";
-    cin.ignore();
-    cin.getline(apNuevo->titulo, 30, '\n');
-    cout << "Genero: ";
-    cin.getline(apNuevo->genero, 20, '\n');
-    cout << "Clasificacion: ";
-    cin.getline(apNuevo->clasificacion, 20, '\n');
-    cout << "Precio: ";
-    cin >> apNuevo->precio;
+    // Datos de la sucursal
+    cout << "Seleccione la sucursal (1- Centro  2- Zapopan  3- Tlaquepaque): ";
+    cin >> apNuevo->sucursal;
 
     // 5) agregar a la LSEA
     // caso A) Lista vacia
@@ -161,6 +163,64 @@ void agregarInicio() {
 //! consultarLista()
 //! ==============================================================
 void consultarLista() {
+    // Declarar variables
+    membresia *apCopia = apLISTA;
+
+    // Validar que esté vacía
+    if (apCopia == NULL) {
+        cout << "La lista está vacía" << endl;
+        return;
+    }
+
+    // Mostrar los nodos
+    cout << "Listado de videojuegos" << endl;
+    cout << "La lista inicia en la dirección: " << apLISTA << endl;
+    while (apCopia != NULL) {
+        // Número del miembro
+        cout << "Numero del miembro: " << apCopia->numero << endl;
+
+        // Datos personales
+        cout << "Nombre completo: " << apCopia->nombre << endl;
+        cout << "Edad: " << apCopia->edad << " años" << endl;
+        cout << "Telefono: " << apCopia->telefono << endl;
+        cout << "Correo: " << apCopia->correo << endl;
+
+        // Datos de la membresía
+        cout << "Fecha del contrato: " << apCopia->fechaContrat << endl;
+        cout << "Costo de la mensualidad: $" << apCopia->costo << endl;
+
+        cout << "Tipo de membresia: ";
+        switch (apCopia->tipo) {
+            case 1:
+                cout << "Plata" << endl;
+                break;
+            case 2:
+                cout << "Oro" << endl;
+                break;
+            case 3:
+                cout << "Platino" << endl;
+                break;
+            default:
+                cout << "Tipo desconocido" << endl;
+        }
+
+        // Datos de la sucursal
+        cout << "Sucursal: ";
+        switch (apCopia->sucursal) {
+            case 1:
+                cout << "Centro" << endl;
+                break;
+            case 2:
+                cout << "Zapopan" << endl;
+                break;
+            case 3:
+                cout << "Tlaquepaque" << endl;
+                break;
+            default:
+                cout << "Sucursal desconocida" << endl;
+        }
+        apCopia = apCopia->next; // Aquí se guarda la dirección del siguiente nodo
+    }
 
     return;
 } // consultarLista()
@@ -218,19 +278,19 @@ void eliminarInicio(){
 //! menu()
 //! ==============================================================
 void menu(void) {
-cout << endl << endl;
-cout << "Listado de mis videojuegos favoritos" << endl;
-cout << "====================================" << endl;
-cout << "1. Agregar un videojuego al inicio de la lista" << endl;
-cout << "2. Consultar mi listado de videojuegos" << endl;
-cout << "3. Buscar un videojuego por su tipo" << endl;
-cout << "4. Agregar un videojuego al final de la lista" << endl;
-cout << "5. Eliminar el videojuego al final de la lista" << endl;
-cout << "6. Agregar un videojuego en la segunda posicion dela lista" << endl;
-cout << "7. Eliminar el videojuego en la segunda posicion de la lista" << endl;
-cout << "8. Filtrar videojuegos por precio" << endl;
-cout << "9. Eliminar el videojuego al inicio de la lista (Tarea)" << endl;
-cout << "0. Salir" << endl;
+    cout << endl << endl;
+    cout << "Listado de mis videojuegos favoritos" << endl;
+    cout << "====================================" << endl;
+    cout << "1. Agregar un videojuego al inicio de la lista" << endl;
+    cout << "2. Consultar mi listado de videojuegos" << endl;
+    cout << "3. Buscar un videojuego por su tipo" << endl;
+    cout << "4. Agregar un videojuego al final de la lista" << endl;
+    cout << "5. Eliminar el videojuego al final de la lista" << endl;
+    cout << "6. Agregar un videojuego en la segunda posicion dela lista" << endl;
+    cout << "7. Eliminar el videojuego en la segunda posicion de la lista" << endl;
+    cout << "8. Filtrar videojuegos por precio" << endl;
+    cout << "9. Eliminar el videojuego al inicio de la lista (Tarea)" << endl;
+    cout << "0. Salir" << endl;
 
-return;
+    return;
 } // menu() 

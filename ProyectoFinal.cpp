@@ -20,14 +20,11 @@ struct membresia {
     float costo;
     char tipo[5];
     char servicios[99];
-    // Faltan las otras cuatro funciones:
+    // Los otros cuatro datos propuestos:
     char telefono[11];
     int sucursal;
     int edad;
     char correo[51];
-
-
-
   // 2. apuntador al siguiente elemento
     membresia *next;
 };

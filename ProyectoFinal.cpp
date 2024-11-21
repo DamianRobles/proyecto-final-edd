@@ -1,8 +1,8 @@
 /*
-  ! Fecha: miercoles 27 de noviembre de 2024
-  ! Autor: Miguel Salvador Calata Rodríguez y Damian Dali Robles de Anda
-  ! Practica No.: Proyecto Final
-  ! Objetivo: LSEA - lista simplemente enlazada abierta
+    ! Fecha: miercoles 27 de noviembre de 2024
+    ! Autor: Miguel Salvador Calata Rodríguez y Damian Dali Robles de Anda
+    ! Practica No.: Proyecto Final
+    ! Objetivo: LSEA - lista simplemente enlazada abierta
 */
 
 //* librerias
@@ -13,15 +13,23 @@ using namespace std;
 
 //* tda's
 struct membresia {
-  // 1. parte informacion
-  int numero;
-  char nombre[99];
-  char fechaContrat[20];
-  float costo;
-  char tipo[5];
-  char servicios[99];
+    // 1. parte informacion
+    int numero;
+    char nombre[99];
+    char fechaContrat[20];
+    float costo;
+    char tipo[5];
+    char servicios[99];
+    // Faltan las otras cuatro funciones:
+    char telefono[11];
+    int sucursal;
+    int edad;
+    char correo[51];
+
+
+
   // 2. apuntador al siguiente elemento
-  membresia *next;
+    membresia *next;
 };
 
 //* operaciones de LSEA
@@ -43,50 +51,51 @@ membresia *apLISTA = NULL;
 //* funcion principal
 int main(void) {
   // declaracion de variables
-  int opcion;
+    int opcion;
 
-  do {
-    menu();
-    cout << "Ingresa tu opcion: ";
-    cin >> opcion;
-    switch (opcion) {
-    case 1:
-      agregarInicio();
-      break;
-    case 2:
-      consultarLista();
-      break;
-    case 3:
-      buscarTitulo();
-      break;
-    case 4:
-      agregarFinal();
-      break;
-    case 5:
-      eliminarFinal();
-      break;
-    case 6:
-      agregarSegundo();
-      break;
-    case 7:
-      eliminarSegundo();
-      break;
-    case 8:
-      filtrarPrecio();
-      break;
-    case 9:
-      eliminarInicio();
-      break;
-    case 0:
-      cout << "Seleccionaste salir" << endl;
-      break;
-    default:
-      cout << "Opcion no valida" << endl;
-      break;
-    } // switch
-  } while (opcion);
+    do {
 
-  return 0;
+        menu();
+        cout << "Ingresa tu opcion: ";
+        cin >> opcion;
+        switch (opcion) {
+        case 1:
+            agregarInicio();
+            break;
+        case 2:
+            consultarLista();
+            break;
+        case 3:
+            buscarTitulo();
+            break;
+        case 4:
+            agregarFinal();
+            break;
+        case 5:
+            eliminarFinal();
+            break;
+        case 6:
+            agregarSegundo();
+            break;
+        case 7:
+            eliminarSegundo();
+            break;
+        case 8:
+            filtrarPrecio();
+            break;
+        case 9:
+            eliminarInicio();
+            break;
+        case 0:
+            cout << "Seleccionaste salir" << endl;
+            break;
+        default:
+            cout << "Opcion no valida" << endl;
+            break;
+        } // switch
+        } while (opcion);
+
+        return 0;
 }
 
 //* implementacion de operaciones - funciones
@@ -94,64 +103,64 @@ int main(void) {
 //! ==============================================================
 void agregarInicio() {
 
-  return;
+    return;
 } // agregarInicio()
 
 //! consultarLista()
 //! ==============================================================
 void consultarLista() {
 
-  return;
+    return;
 } // consultarLista()
 
 //! buscarTitulo()
 //! ==============================================================
 void buscarTitulo() {
 
-  return;
+    return;
 } // buscarTitulo()
 
 
 //! agregarFinal()
 //! ==============================================================
 void agregarFinal(){
-  
-  return;
+
+    return;
 } // agregarFinal()
 
 //! agregarSegundo()  TAREA
 //! ==============================================================
 void agregarSegundo(){
 
-  return;
+    return;
 } // agrearSegundo()
 
 //! eliminarSegundo()  TAREA
 //! ==============================================================
 void eliminarSegundo(){
 
-  return;
+    return;
 } // eliminarSegundo()
 
 //! eliminarFinal() 
 //! ==============================================================
 void eliminarFinal(){
 
-  return;
+    return;
 } // eliminarFinal()
 
 //! filtrarPrecio()  TAREA
 //! ==============================================================
 void filtrarPrecio(){
 
-  return;
+    return;
 } // filtrarPrecio()
 
 //! eliminarInicio()  TAREA
 //! ==============================================================
 void eliminarInicio(){
 
-  return;
+    return;
 } // eliminarInicio()
 
 //! menu()

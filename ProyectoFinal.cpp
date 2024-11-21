@@ -99,6 +99,61 @@ int main(void) {
 //! agregarInicio()
 //! ==============================================================
 void agregarInicio() {
+    // 1) declarar un apuntador
+    membresia *apNuevo = NULL;
+
+    // 2) solicitar memoria dinamica
+    apNuevo = (membresia *)malloc(sizeof(membresia));
+
+    // 3) validar el apuntador
+    if (apNuevo == NULL) {
+        cout << "No se tiene memoria suficiente" << endl;
+    } // if
+
+    // 4) guardar los datos del nuevo videojuego
+    cout << endl << endl;
+    cout << "Ingresa los datos del nuevo miembro" << endl;
+
+    cout << "Numero del miembro: ";
+    cin >> apNuevo->numero;
+
+    cout << "Nombre completo del miembro: ";
+    cin.ignore();
+    cin.getline(apNuevo->nombre, 99, '\n');
+
+    cout << "Fecha del contrado: ";
+    cin.ignore();
+    cin.getline(apNuevo->fechaContrat, 30, '\n');
+
+    cout << "Costo de la mensualidad: ";
+    cin >> apNuevo->costo
+
+
+
+
+    cout << "Titulo: ";
+    cin.ignore();
+    cin.getline(apNuevo->titulo, 30, '\n');
+    cout << "Genero: ";
+    cin.getline(apNuevo->genero, 20, '\n');
+    cout << "Clasificacion: ";
+    cin.getline(apNuevo->clasificacion, 20, '\n');
+    cout << "Precio: ";
+    cin >> apNuevo->precio;
+
+    // 5) agregar a la LSEA
+    // caso A) Lista vacia
+    if (apLISTA == NULL) {
+        apLISTA = apNuevo;
+        apNuevo->next = NULL;
+        cout << "Videojuego agregado corrrectamente al inicio de la lista" << endl;
+        return;
+    } // if
+
+    // caso B) lista no vacia
+    apNuevo->next = apLISTA;
+    apLISTA = apNuevo;
+    cout << "Videojuego agregado correctamente al inicio de la lista" << endl;
 
     return;
 } // agregarInicio()

@@ -26,3 +26,42 @@ inicio del programa).
 7. Recuperar los datos del archivo (mostrar en pantalla lo almacenado en el archivo)
 8. Ordenar los elementos de la lista por un dato específico (método ordenamiento)
 0. Salir
+
+
+Membresía Plata:
+Acceso a todas las instalaciones: Gimnasio completamente equipado, piscinas, canchas deportivas (tenis, pádel, etc.), áreas de cardio y pesas.
+Clases grupales: Amplia variedad de clases como yoga, pilates, zumba, spinning, etc.
+Acceso a la sauna y jacuzzi.
+Descuentos en la tienda del club.
+Eventos sociales mensuales: Reuniones, torneos amistosos, etc.
+
+
+Membresía Oro:
+Todos los beneficios de la membresía Plata.
+Acceso preferencial a las clases y canchas.
+Asesoramiento personalizado por un entrenador.
+Acceso a un área de relajación exclusiva.
+Descuentos especiales en servicios adicionales (spa, fisioterapia).
+Eventos VIP exclusivos: Cenas temáticas, conferencias con expertos en fitness, etc.
+
+
+Membresía Platino:
+Todos los beneficios de las membresías Plata y Oro.
+Entrenador personal exclusivo.
+Acceso a un área de spa privada.
+Acceso a servicios de nutrición y fisioterapia.
+Invitaciones a eventos especiales fuera del club (conciertos, eventos deportivos).
+Uso exclusivo de ciertas instalaciones en horarios específicos.
+Programa de viajes fitness: Viajes a destinos turísticos con actividades deportivas y de bienestar.
+
+
+
+
+
+servicios:
+plata
+Acceso a todas las instalaciones. Clases grupales. Acceso a la sauna y jacuzzi.
+oro
+Beneficios de la membresía Plata. Acceso preferencial a las clases y canchas. Asesoramiento personalizado por un entrenador. Descuento en servicios de nutrición y fisioterapia.
+platino
+Beneficios de la membresía Plata y Oro. Entrenador personal exclusivo. Acceso a un área de spa privada. Acceso gratuito a servicios de nutrición y fisioterapia.

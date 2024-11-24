@@ -168,7 +168,7 @@ void consultarLista() {
 
 //! buscarTitulo()
 //! ==============================================================
-    void buscarTitulo() {
+void buscarTitulo() {
     // declarar variables
     videojuego *apCopia = apLISTA;
     char titBuscar[30];
@@ -360,7 +360,7 @@ void consultarLista() {
 
 //! eliminarFinal() 
 //! ==============================================================
-    void eliminarFinal(){
+void eliminarFinal(){
     // 1) declarar  de variables
     videojuego *apBorrar, *apPenultimo;
     int respuesta;

@@ -39,7 +39,7 @@ int main(void) {
     
     cout << "Terminamos." << endl;
     
-    return 0:
+    return 0;
 }  // main()
 
 

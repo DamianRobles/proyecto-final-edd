@@ -1,16 +1,42 @@
 /*
     ! Fecha: miercoles 27 de noviembre de 2024
-    ! Autor: Miguel Salvador Calata Rodríguez y Damian Dali Robles de Anda
+    ! Autor: Miguel Salvador Calata Rodriguez y Damian Dali Robles de Anda
     ! Practica No.: Proyecto Final
     ! Objetivo: Proyecto Final con LSEA - lista simplemente enlazada abierta
 */
+
+
+
+// Documentacion de funciones extras
+/**
+ * Función Sleep
+ * Detiene la ejecución del programa durante un periodo de tiempo específico.
+ *
+ * Función Beep
+ * Emite un sonido en la consola, útil para notificaciones o alertas.
+ *
+ * Función SetConsoleTextAttribute
+ * Cambia los atributos de texto de la consola, como el color del texto y el color de fondo.
+ *
+ * Función GetStdHandle
+ * Obtiene un identificador para un dispositivo estándar (entrada, salida o error).
+ *
+ * Función strchr
+ * Busca la primera aparición de un carácter específico en una cadena de texto.
+ *
+ * Función istringstream
+ * Convierte una cadena de texto en un flujo de entrada, permitiendo la conversión de tipos de datos.
+ */
+
+
 
 //* librerias
 #include <iostream>
 #include <stdlib.h>
 #include <string.h>
 #include <fstream>
-#include <sstream>
+#include <sstream> // Necasario para istringstream
+#include <windows.h> // Necesario para Sleep(), Beep, SetConsoleTextAttribute y GetStdHandle
 using namespace std;
 
 //* tda's
@@ -30,6 +56,11 @@ struct membresia {
   // 2. apuntador al siguiente elemento
     membresia *next;
 };
+
+// funciones para consola
+void consolaBlancoTextoNegro();
+void moverVentana(int,int,int,int);
+void logo();
 
 //* operaciones de LSEA
 void agregarInicio(); //* corregido
@@ -53,6 +84,13 @@ membresia *apLISTA = NULL;
 int main(void) {
   // declaracion de variables
     int opcion;
+
+    // Dos funciones de inicio
+    consolaBlancoTextoNegro();
+    moverVentana(100, 100, 1600, 800); // Mover y cambiar el tamanio de la ventana de la consola
+    Sleep(300);
+    logo();
+    system("cls");
 
     do {
 
@@ -102,7 +140,9 @@ int main(void) {
         return 0;
 }
 
-//* implementacion de operaciones - funciones
+
+//========================================================[Implementacion de operaciones]======================================================
+
 //! agregarInicio()
 //! ==============================================================
 void agregarInicio() {
@@ -118,6 +158,10 @@ void agregarInicio() {
     // 3) validar el apuntador
     if (apNuevo == NULL) {
         cout << "No se tiene memoria suficiente" << endl;
+        for (int i = 0; i < 4; ++i) {
+            Beep(500, 200); // Reproduce un sonido de 500 Hz durante 300 ms
+            Sleep(166);
+        }
     } // if
 
     // 4) guardar los datos del nuevo miembro
@@ -127,6 +171,10 @@ void agregarInicio() {
     
     // Número del miembro
     cout << "Numero del miembro: ";
+
+
+
+
     cin >> apNuevo->numero;
     cin.ignore(); // Limpiar el buffer tras un cin>>
 
@@ -150,6 +198,10 @@ void agregarInicio() {
         }
         else{
             cout << "Ingrese una direccion de correo valida" << endl;
+            for (int i = 0; i < 4; ++i) {
+                Beep(500, 200); // Reproduce un sonido de 500 Hz durante 300 ms
+                Sleep(166);
+            }
         }
     }
     flag = false;
@@ -165,6 +217,10 @@ void agregarInicio() {
         }
         else{
             cout << "Ingrese la fecha como se indica en el ejemplo" << endl;
+            for (int i = 0; i < 4; ++i) {
+                Beep(500, 200); // Reproduce un sonido de 500 Hz durante 300 ms
+                Sleep(166);
+            }
             // cin.ignore();
         }
     }
@@ -186,19 +242,23 @@ void agregarInicio() {
                     strcpy(apNuevo->tipo, "Plata");
                     break;
                 case 2:
-                    cout << "Servicios incluidos: Beneficios de la membresía Plata. Acceso preferencial a las clases y canchas. Asesoramiento personalizado por un entrenador. Descuento en servicios de nutrición y fisioterapia." << endl;
-                    strcpy(apNuevo->servicios, "Beneficios de la membresía Plata. Acceso preferencial a las clases y canchas. Asesoramiento personalizado por un entrenador. Descuento en servicios de nutrición y fisioterapia.");
+                    cout << "Servicios incluidos: Beneficios de la membresia Plata. Acceso preferencial a las clases y canchas. Asesoramiento personalizado por un entrenador. Descuento en servicios de nutricion y fisioterapia." << endl;
+                    strcpy(apNuevo->servicios, "Beneficios de la membresia Plata. Acceso preferencial a las clases y canchas. Asesoramiento personalizado por un entrenador. Descuento en servicios de nutricion y fisioterapia.");
                     strcpy(apNuevo->tipo, "Oro");
                     break;
                 case 3:
-                    cout << "Servicios incluidos: Beneficios de la membresía Plata y Oro. Entrenador personal exclusivo. Acceso a un área de spa privada. Acceso gratuito a servicios de nutrición y fisioterapia." << endl;
-                    strcpy(apNuevo->servicios, "Beneficios de la membresía Plata y Oro. Entrenador personal exclusivo. Acceso a un área de spa privada. Acceso gratuito a servicios de nutrición y fisioterapia.");
+                    cout << "Servicios incluidos: Beneficios de la membresia Plata y Oro. Entrenador personal exclusivo. Acceso a un area de spa privada. Acceso gratuito a servicios de nutricion y fisioterapia." << endl;
+                    strcpy(apNuevo->servicios, "Beneficios de la membresia Plata y Oro. Entrenador personal exclusivo. Acceso a un area de spa privada. Acceso gratuito a servicios de nutricion y fisioterapia.");
                     strcpy(apNuevo->tipo, "Platino");
                     break;
             }
         }
         else{
             cout << "Elige una opcion de la lista" << endl;
+            for (int i = 0; i < 4; ++i) {
+                Beep(500, 200); // Reproduce un sonido de 500 Hz durante 300 ms
+                Sleep(166);
+            }
         }
     }
     // reinicio de variable flag
@@ -209,7 +269,7 @@ void agregarInicio() {
     while(flag == false){
         cout << "Seleccione la sucursal (1- Centro  2- Zapopan  3- Tlaquepaque): ";
         cin >> tempInt;
-        // verificación
+        // verificacion
         if(tempInt==1 || tempInt==2 || tempInt==3){
             flag = true;
             switch(tempInt){
@@ -227,6 +287,10 @@ void agregarInicio() {
         }
         else{
             cout << "Elige una opcion de la lista" << endl;
+            for (int i = 0; i < 4; ++i) {
+                Beep(500, 200); // Reproduce un sonido de 500 Hz durante 300 ms
+                Sleep(166);
+            }
         }
     }
     // reinicio de variable flag
@@ -267,6 +331,10 @@ void agregarFinal(){
     // 3) validar el apuntador
     if (apNuevo == NULL) {
         cout << "No se tiene memoria suficiente" << endl;
+        for (int i = 0; i < 4; ++i) {
+            Beep(300, 200); // Reproduce un sonido de 750 Hz durante 300 ms
+            Sleep(200);
+        }
     } // if
 
     // 4) guardar los datos del nuevo miembro
@@ -299,6 +367,10 @@ void agregarFinal(){
         }
         else{
             cout << "Ingrese una direccion de correo valida" << endl;
+            for (int i = 0; i < 4; ++i) {
+                Beep(500, 200); // Reproduce un sonido de 500 Hz durante 300 ms
+                Sleep(166);
+            }
         }
     }
     flag = false;
@@ -314,6 +386,10 @@ void agregarFinal(){
         }
         else{
             cout << "Ingrese la fecha como se indica en el ejemplo" << endl;
+            for (int i = 0; i < 4; ++i) {
+                Beep(500, 200); // Reproduce un sonido de 500 Hz durante 300 ms
+                Sleep(166);
+            }
             // cin.ignore();
         }
     }
@@ -348,6 +424,10 @@ void agregarFinal(){
         }
         else{
             cout << "Elige una opcion de la lista" << endl;
+            for (int i = 0; i < 4; ++i) {
+                Beep(500, 200); // Reproduce un sonido de 500 Hz durante 300 ms
+                Sleep(166);
+            }
         }
     }
     // reinicio de variable flag
@@ -376,6 +456,10 @@ void agregarFinal(){
         }
         else{
             cout << "Elige una opcion de la lista" << endl;
+            for (int i = 0; i < 4; ++i) {
+                Beep(500, 200); // Reproduce un sonido de 500 Hz durante 300 ms
+                Sleep(166);
+            }
         }
     }
     // reinicio de variable flag
@@ -504,11 +588,15 @@ void consultarLista() {
     // Declarar variables
     membresia *apCopia = apLISTA;
 
-    // Validar que esté vacía
+    // Validar que este vacia
     if (apCopia == NULL) {
-        cout << "La lista está vacía" << endl;
+        cout << "La lista este vacia" << endl;
+        for (int i = 0; i < 4; ++i) {
+            Beep(500, 200); // Reproduce un sonido de 500 Hz durante 300 ms
+            Sleep(166);
+        }
         return;
-    }
+    } // if
 
     // Mostrar los nodos
     cout << endl << endl;
@@ -517,8 +605,8 @@ void consultarLista() {
     while (apCopia != NULL) {
         // se llama la funcion imprimir y se le envia la direccion del elemento de la lista para imprimirlo
         imprimir(apCopia);
-        apCopia = apCopia->next; // Aquí se guarda la dirección del siguiente nodo
-    }
+        apCopia = apCopia->next; // Aqui se guarda la direccion del siguiente nodo
+    } // while
 
     return;
 } // consultarLista()
@@ -535,7 +623,7 @@ void filtrarEdad(){
     if (apCopia == NULL) {
         cout << "La lista esta vacia" << endl;
         return;
-    }
+    } // if
 
     // solicitar el titulo a buscar
     cout << "Ingresa la edad minima a buscar: ";
@@ -571,7 +659,7 @@ void buscarNombre() {
     if (apCopia == NULL) {
         cout << "La lista esta vacia" << endl;
         return;
-    }
+    }// if
 
     // solicitar el titulo a buscar
     cout << "Ingresa el nombre a buscar iniciando por apellidos: ";
@@ -590,6 +678,10 @@ void buscarNombre() {
     apCopia = apCopia->next; //? aqui se guarda la direccion de memoria del siguiente
     }                    // while
     cout << "El miembro con el nombre: " << nombreBuscar << " no fue localizado" << endl;
+    for (int i = 0; i < 4; ++i) {
+        Beep(500, 200); // Reproduce un sonido de 500 Hz durante 300 ms
+        Sleep(166);
+    }
 
     return;
 } // buscarNombre()
@@ -638,18 +730,18 @@ void leerArchivo(){
     cout << endl << "Listado de miembros del Club deportivo Alta Vista" << endl;
     cout << "=================================================" << endl;
     while (getline(archivo, linea)) {
-        // Dividir la línea por comas
+        // Dividir la linea por comas
         istringstream ss(linea);
         string linea;
 
-        // Imprimir cada campo de la línea
+        // Imprimir cada campo de la linea
         cout << "Numero de miembro: "; getline(ss, linea, ','); cout << linea << endl;
         // Datos personales
         cout << "Nombre completo: "; getline(ss, linea, ','); cout << linea << endl;
         cout << "Edad: "; getline(ss, linea, ','); cout << linea << endl;
         cout << "Telefono: "; getline(ss, linea, ','); cout << linea << endl;
         cout << "Correo: "; getline(ss, linea, ','); cout << linea << endl;
-        // Datos de la membresía
+        // Datos de la membresia
         cout << "Fecha del contrato: "; getline(ss, linea, ','); cout << linea << endl;
         cout << "Costo de la mensualidad: $"; getline(ss, linea, ','); cout << linea << endl;
         cout << "Tipo de membresia: "; getline(ss, linea, ','); cout << linea << endl;
@@ -660,16 +752,99 @@ void leerArchivo(){
     }
 
     archivo.close();
-    cout << "Datos leídos del archivo textFile.txt" << endl;
+    cout << "Datos leidos del archivo textFile.txt" << endl;
     return;
 } // leerArchivo()
 
 //! ordenarElementos()
 //! ==============================================================
-void ordenarElementos(){
+void ordenarElementos(void) {
+    // Declarar apuntadores
+    membresia *i = NULL, *j = NULL;
+    membresia *paso;
+    int vueltas;
+
+    // Caso A - Lista vacia
+    if (apLISTA == NULL) {
+        system("cls");
+        cout << "No existen membresias registradas en la lista. No se puede ordenar la lista." << endl;
+        return;
+    } // termina if
+
+    // Solicitar memoria para la variable temporal
+    paso = (membresia *)malloc(sizeof(membresia));
+
+    // Validar asignacion de memoria
+    if (paso == NULL) {
+        cout << "No hay memoria suficiente para crear variable de paso." << endl;
+        return;
+    } // if
+
+    // Calcular el numero de vueltas necesarias para recorrer la lista
+    i = apLISTA;
+    vueltas = 0;
+    while (i->next != NULL) {
+        vueltas++;
+        i = i->next;
+    } // while
+
+    // Lista con dos o mas nodos
+    while (vueltas > 0) {
+        i = apLISTA;
+        // Recorrer toda la lista para colocar un elemento en su lugar
+        while (i->next != NULL) {
+            j = i->next;
+            // Comparar los numeros de membresia, si es necesario intercambiar la informacion de los nodos i y j
+            if (i->numero > j->numero) {
+
+                // 1) Copiar i -> paso
+                paso->numero = i->numero;
+                strcpy(paso->nombre, i->nombre);
+                strcpy(paso->fechaContrat, i->fechaContrat);
+                paso->costo = i->costo;
+                strcpy(paso->tipo, i->tipo);
+                strcpy(paso->servicios, i->servicios);
+                strcpy(paso->telefono, i->telefono);
+                strcpy(paso->sucursal, i->sucursal);
+                paso->edad = i->edad;
+                strcpy(paso->correo, i->correo);
+
+                // 2) Copiar j -> i
+                i->numero = j->numero;
+                strcpy(i->nombre, j->nombre);
+                strcpy(i->fechaContrat, j->fechaContrat);
+                i->costo = j->costo;
+                strcpy(i->tipo, j->tipo);
+                strcpy(i->servicios, j->servicios);
+                strcpy(i->telefono, j->telefono);
+                strcpy(i->sucursal, j->sucursal);
+                i->edad = j->edad;
+                strcpy(i->correo, j->correo);
+
+                // 3) Copiar paso -> j
+                j->numero = paso->numero;
+                strcpy(j->nombre, paso->nombre);
+                strcpy(j->fechaContrat, paso->fechaContrat);
+                j->costo = paso->costo;
+                strcpy(j->tipo, paso->tipo);
+                strcpy(j->servicios, paso->servicios);
+                strcpy(j->telefono, paso->telefono);
+                strcpy(j->sucursal, paso->sucursal);
+                j->edad = paso->edad;
+                strcpy(j->correo, paso->correo);
+
+            } // if - intercambia informacion nodos
+            i = i->next;
+        } // while
+        vueltas--;
+    } // while
+
+    cout << "Los datos han sido ordenados por numero de membresia." << endl;
+    cout << "Ingrese a la OPCION 5 para consultarlos." << endl << endl;
 
     return;
-} // ordenarElementos()
+} // ordenarLista
+
 
 //! imprimir()
 //! ==============================================================
@@ -701,16 +876,76 @@ void menu(void) {
     cout << "Listado de miembros del Club deportivo Alta Vista" << endl;
     cout << "=================================================" << endl;
     cout << "1. Agregar un miembro al inicio de la lista" << endl; //* corregido
-    cout << "2. Agregar un videojuego al final de la lista" << endl;
-    cout << "3. Eliminar el videojuego al inicio de la lista" << endl;
-    cout << "4. Eliminar el videojuego al final de la lista" << endl;    
+    cout << "2. Agregar un miembro al final de la lista" << endl; // Corregido
+    cout << "3. Eliminar al miembro al inicio de la lista" << endl; // Corregido
+    cout << "4. Eliminar al miembro al final de la lista" << endl; // corregido
     cout << "5. Consultar el listado de miembros" << endl;  //* corregido
-    cout << "6. Filtrar videojuegos por precio" << endl;
+    cout << "6. Filtrar Miembros por edad" << endl;        // Corregido
     cout << "7. Buscar a un miembro por su nombre" << endl; //* corregido
-    cout << "8. Guardar los datos en la lista en un archivo (respaldo)" << endl;
+    cout << "8. Guardar los datos en la lista en un archivo (respaldar)" << endl;
     cout << "9. Recuperar los datos del archivo (mostrar en pantalla lo almacenado en el archivo)" << endl;
-    cout << "10.Ordenar los elementos de la lista por un dato específico (método ordenamiento)" << endl;
+    cout << "10.Odenar los elementos de la lista por un dato especifico (metodo ordenamiento)" << endl;
     cout << "0. Salir" << endl;
 
     return;
-} // menu() 
+} // menu()
+
+
+//================================================================[Arte ASCII y consola]=======================================================
+
+//! logo()
+//! ==============================================================
+void logo (){
+
+    cout <<"                    Sistema del Club deportivo Alta vista" << endl  << endl <<
+         "                                         @%@%                        \n"
+         "                                      :@+::*@                        \n"
+         "                                     %%-::::+@                       \n"
+         "                  =                 @*:::::::=@=  @                  \n"
+         "                 @@@              @@=::*@*@+::-#@@@@                 \n"
+         "               @%=:*@            @*::=%@   @*::::::*@                \n"
+         "              @#::::*@         #@=::*@      =-::::::=@               \n"
+         "             @*::::::=@=      @*::-%@       +::::::::=@:             \n"
+         "            @+::=%**::-#@   *@+::+@-       @*::=%#@*::-%@            \n"
+         "          =@=:::%  @#-::*@+@*::*@@       %@=::+@.  @-:::*@           \n"
+         "         @%-::::@   =@-::--+%@@+        @*::-#@    ==::::*@          \n"
+         "        @*::::::@     @++%@@          %@=::+@=      +:::::=@+        \n"
+         "       @+:::::::@      @@            @*::-#@       @=::::-:-%%       \n"
+         "     =@=::#**=::*@           @@@@  =@=::=@+       +#:::%:%=::*@      \n"
+         "    %#-:*@@  %:::*:        +@%::=%@#-:-*@         @:::*+ :@#-:+@     \n"
+         "   @@@@@@    @#::-#@         @*::::::=@%        +@=::+@    =@@@@@    \n"
+         " =@@@         *#:::*@          :::::*@         @%-::+@         *@@@  \n"
+         " #             @%=::+@:       %-::=%@         @*:::#@             .  \n"
+         "                 @*::-%@    %%=::+@   @@    .@+::=@*                 \n"
+         "                  @%=::+@  @*:::#@  -@++@. %%=::*@                   \n"
+         "                   -@*::=**=::=%%  *@*::=#%*::+@@                    \n"
+         "                     @%=:::::+@.     @*:::::=%@                      \n"
+         "                       @*::-*@        @%-:=%@                        \n"
+         "                        %@*@*          :@@@                          \n"
+         "                          @:                                         \n";
+    cout << "Favor de esperar un momento";
+
+    Sleep(1250);
+} // logo()
+
+//! consolaBlancoTextoNegro()
+//! ==============================================================
+void consolaBlancoTextoNegro() {
+    // Obtener el manejador de la consola
+    HANDLE hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
+
+    // Establecer fondo blanco y texto negro
+    SetConsoleTextAttribute(hConsole, BACKGROUND_RED | BACKGROUND_GREEN | BACKGROUND_BLUE);
+
+    // Limpiar la consola para aplicar el color atodo el fondo
+    system("cls");
+} // ConsolaBlancoTextoNegro ()
+
+//! moverVentana()
+//! ==============================================================
+void moverVentana(int x, int y, int ancho, int alto) {
+    HWND consoleWindow = GetConsoleWindow();
+    MoveWindow(consoleWindow, x, y, ancho, alto, TRUE);
+} // moverVentana()
+
+// Fin de archivo

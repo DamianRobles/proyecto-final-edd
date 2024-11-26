@@ -171,10 +171,6 @@ void agregarInicio() {
     
     // Numero del miembro
     cout << "Numero del miembro: ";
-
-
-
-
     cin >> apNuevo->numero;
     cin.ignore(); // Limpiar el buffer tras un cin>>
 
@@ -209,7 +205,7 @@ void agregarInicio() {
     // Datos de la membresia
     // Datos de la fecha del contrato con verificacion que ingrese la fecha como en el ejemplo
     while(flag == false){
-        cout << "Fecha del contrato (ej. 01/12/2024): ";
+        cout << "Fecha del contrato en formato DD/MM/AAAA (ej. 01/12/2024): ";
         cin.getline(tempChar, 30, '\n');
         if(tempChar[2]==47 && tempChar[5]==47){
             flag = true;
@@ -378,7 +374,7 @@ void agregarFinal(){
     // Datos de la membresia
     // Datos de la fecha del contrato con verificacion que ingrese la fecha como en el ejemplo
     while(flag == false){
-        cout << "Fecha del contrato (ej. 01/12/2024): ";
+        cout << "Fecha del contrato en formato DD/MM/AAAA (ej. 01/12/2024): ";
         cin.getline(tempChar, 30, '\n');
         if(tempChar[2]==47 && tempChar[5]==47){
             flag = true;
@@ -588,9 +584,9 @@ void consultarLista() {
     // Declarar variables
     membresia *apCopia = apLISTA;
 
-    // Validar que este vacia
+    // Validar que esta vacia
     if (apCopia == NULL) {
-        cout << "La lista este vacia" << endl;
+        cout << "La lista esta vacia" << endl;
         for (int i = 0; i < 4; ++i) {
             Beep(500, 200); // Reproduce un sonido de 500 Hz durante 300 ms
             Sleep(166);
@@ -619,7 +615,7 @@ void filtrarEdad(){
     bool encontrado = false;
     membresia *apCopia = apLISTA;
 
-    // validar que este vacia
+    // validar que esta vacia
     if (apCopia == NULL) {
         cout << "La lista esta vacia" << endl;
         return;
@@ -655,7 +651,7 @@ void buscarNombre() {
     membresia *apCopia = apLISTA;
     char nombreBuscar[99];
 
-    // validar que este vacia
+    // validar que esta vacia
     if (apCopia == NULL) {
         cout << "La lista esta vacia" << endl;
         return;
@@ -841,6 +837,7 @@ void ordenarElementos(void) {
 
     cout << "Los datos han sido ordenados por numero de membresia." << endl;
     cout << "Ingrese a la OPCION 5 para consultarlos." << endl << endl;
+    Sleep(2000);
 
     return;
 } // ordenarLista

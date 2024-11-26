@@ -9,23 +9,23 @@
 
 // Documentacion de funciones extras
 /**
- * Función Sleep
- * Detiene la ejecución del programa durante un periodo de tiempo específico.
+ * Funcion Sleep
+ * Detiene la ejecucion del programa durante un periodo de tiempo especifico.
  *
- * Función Beep
- * Emite un sonido en la consola, útil para notificaciones o alertas.
+ * Funcion Beep
+ * Emite un sonido en la consola, util para notificaciones o alertas.
  *
- * Función SetConsoleTextAttribute
+ * Funcion SetConsoleTextAttribute
  * Cambia los atributos de texto de la consola, como el color del texto y el color de fondo.
  *
- * Función GetStdHandle
- * Obtiene un identificador para un dispositivo estándar (entrada, salida o error).
+ * Funcion GetStdHandle
+ * Obtiene un identificador para un dispositivo estandar (entrada, salida o error).
  *
- * Función strchr
- * Busca la primera aparición de un carácter específico en una cadena de texto.
+ * Funcion strchr
+ * Busca la primera aparicion de un caracter especifico en una cadena de texto.
  *
- * Función istringstream
- * Convierte una cadena de texto en un flujo de entrada, permitiendo la conversión de tipos de datos.
+ * Funcion istringstream
+ * Convierte una cadena de texto en un flujo de entrada, permitiendo la conversion de tipos de datos.
  */
 
 
@@ -169,10 +169,13 @@ void agregarInicio() {
     cout << "Ingresa los datos del nuevo miembro" << endl;
     cout << "====================================" << endl;
     
-    // Número del miembro
+    // Numero del miembro
     cout << "Numero del miembro: ";
-    cin >> apNuevo->numero;
 
+
+
+
+    cin >> apNuevo->numero;
     cin.ignore(); // Limpiar el buffer tras un cin>>
 
     // Datos personales
@@ -206,7 +209,7 @@ void agregarInicio() {
     // Datos de la membresia
     // Datos de la fecha del contrato con verificacion que ingrese la fecha como en el ejemplo
     while(flag == false){
-        cout << "Fecha del contrato en formato DD/MM/AAAA (ej. 01/12/2024): ";
+        cout << "Fecha del contrato (ej. 01/12/2024): ";
         cin.getline(tempChar, 30, '\n');
         if(tempChar[2]==47 && tempChar[5]==47){
             flag = true;
@@ -375,7 +378,7 @@ void agregarFinal(){
     // Datos de la membresia
     // Datos de la fecha del contrato con verificacion que ingrese la fecha como en el ejemplo
     while(flag == false){
-        cout << "Fecha del contrato en formato DD/MM/AAAA (ej. 01/12/2024): ";
+        cout << "Fecha del contrato (ej. 01/12/2024): ";
         cin.getline(tempChar, 30, '\n');
         if(tempChar[2]==47 && tempChar[5]==47){
             flag = true;
@@ -587,7 +590,7 @@ void consultarLista() {
 
     // Validar que este vacia
     if (apCopia == NULL) {
-        cout << "La lista esta vacia" << endl;
+        cout << "La lista este vacia" << endl;
         for (int i = 0; i < 4; ++i) {
             Beep(500, 200); // Reproduce un sonido de 500 Hz durante 300 ms
             Sleep(166);
@@ -838,7 +841,6 @@ void ordenarElementos(void) {
 
     cout << "Los datos han sido ordenados por numero de membresia." << endl;
     cout << "Ingrese a la OPCION 5 para consultarlos." << endl << endl;
-    Sleep(2000);
 
     return;
 } // ordenarLista
@@ -852,7 +854,7 @@ void imprimir(membresia *apCopia){
     cout << "Numero de miembro: " << apCopia->numero << endl;
     // Datos personales
     cout << "Nombre completo: " << apCopia->nombre << endl;
-    cout << "Edad: " << apCopia->edad << " anios" << endl;
+    cout << "Edad: " << apCopia->edad << " axos" << endl;
     cout << "Telefono: " << apCopia->telefono << endl;
     cout << "Correo: " << apCopia->correo << endl;
     // Datos de la membresia
@@ -874,15 +876,15 @@ void menu(void) {
     cout << "Listado de miembros del Club deportivo Alta Vista" << endl;
     cout << "=================================================" << endl;
     cout << "1. Agregar un miembro al inicio de la lista" << endl; //* corregido
-    cout << "2. Agregar un miembro al final de la lista" << endl; // Corregido
-    cout << "3. Eliminar al miembro al inicio de la lista" << endl; // Corregido
-    cout << "4. Eliminar al miembro al final de la lista" << endl; // corregido
+    cout << "2. Agregar un miembro al final de la lista" << endl; //* Corregido
+    cout << "3. Eliminar al miembro al inicio de la lista" << endl; //* Corregido
+    cout << "4. Eliminar al miembro al final de la lista" << endl; //* corregido
     cout << "5. Consultar el listado de miembros" << endl;  //* corregido
-    cout << "6. Filtrar Miembros por edad" << endl;        // Corregido
+    cout << "6. Filtrar Miembros por edad" << endl;        //* Corregido
     cout << "7. Buscar a un miembro por su nombre" << endl; //* corregido
-    cout << "8. Guardar los datos en la lista en un archivo (respaldar)" << endl;
-    cout << "9. Recuperar los datos del archivo (mostrar en pantalla lo almacenado en el archivo)" << endl;
-    cout << "10.Odenar los elementos de la lista por un dato especifico (metodo ordenamiento)" << endl;
+    cout << "8. Guardar los datos en la lista en un archivo" << endl;
+    cout << "9. Recuperar los datos del archivo" << endl;
+    cout << "10.Odenar los elementos de la lista por un dato especifico" << endl;
     cout << "0. Salir" << endl;
 
     return;

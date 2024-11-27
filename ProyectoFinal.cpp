@@ -9,23 +9,23 @@
 
 // Documentacion de funciones extras
 /**
- * Función Sleep
- * Detiene la ejecución del programa durante un periodo de tiempo específico.
+ * Funcion Sleep
+ * Detiene la ejecucion del programa durante un periodo de tiempo especifico.
  *
- * Función Beep
- * Emite un sonido en la consola, útil para notificaciones o alertas.
+ * Funcion Beep
+ * Emite un sonido en la consola, util para notificaciones o alertas.
  *
- * Función SetConsoleTextAttribute
+ * Funcion SetConsoleTextAttribute
  * Cambia los atributos de texto de la consola, como el color del texto y el color de fondo.
  *
- * Función GetStdHandle
- * Obtiene un identificador para un dispositivo estándar (entrada, salida o error).
+ * Funcion GetStdHandle
+ * Obtiene un identificador para un dispositivo estandar (entrada, salida o error).
  *
- * Función strchr
- * Busca la primera aparición de un carácter específico en una cadena de texto.
+ * Funcion strchr
+ * Busca la primera aparicion de un caracter especifico en una cadena de texto.
  *
- * Función istringstream
- * Convierte una cadena de texto en un flujo de entrada, permitiendo la conversión de tipos de datos.
+ * Funcion istringstream
+ * Convierte una cadena de texto en un flujo de entrada, permitiendo la conversion de tipos de datos.
  */
 
 

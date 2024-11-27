@@ -9,23 +9,23 @@
 
 // Documentacion de funciones extras
 /**
- * Función Sleep
- * Detiene la ejecución del programa durante un periodo de tiempo específico.
+ * Funcion Sleep
+ * Detiene la ejecucion del programa durante un periodo de tiempo especifico.
  *
- * Función Beep
- * Emite un sonido en la consola, útil para notificaciones o alertas.
+ * Funcion Beep
+ * Emite un sonido en la consola, util para notificaciones o alertas.
  *
- * Función SetConsoleTextAttribute
+ * Funcion SetConsoleTextAttribute
  * Cambia los atributos de texto de la consola, como el color del texto y el color de fondo.
  *
- * Función GetStdHandle
- * Obtiene un identificador para un dispositivo estándar (entrada, salida o error).
+ * Funcion GetStdHandle
+ * Obtiene un identificador para un dispositivo estandar (entrada, salida o error).
  *
- * Función strchr
- * Busca la primera aparición de un carácter específico en una cadena de texto.
+ * Funcion strchr
+ * Busca la primera aparicion de un caracter especifico en una cadena de texto.
  *
- * Función istringstream
- * Convierte una cadena de texto en un flujo de entrada, permitiendo la conversión de tipos de datos.
+ * Funcion istringstream
+ * Convierte una cadena de texto en un flujo de entrada, permitiendo la conversion de tipos de datos.
  */
 
 
@@ -53,24 +53,14 @@ struct membresia {
     char sucursal[15];
     int edad;
     char correo[99];
-    // 2. apuntador al siguiente elemento
+  // 2. apuntador al siguiente elemento
     membresia *next;
-};
-
-struct nodoAVL {
-    int buscarNumero;  // Clave para ordenar y buscar
-    int usados;  // Numero de las membresias utilizados
-    nodoAVL *izquierda;
-    nodoAVL *derecha;
-    int altura;
 };
 
 // funciones para consola
 void consolaBlancoTextoNegro();
 void moverVentana(int,int,int,int);
 void logo();
-
-
 
 //* operaciones de LSEA
 void agregarInicio(); //* corregido
@@ -86,83 +76,68 @@ void ordenarElementos();
 void imprimir(membresia *);
 void menu();
 
-
-//* funciones del arbol AVL
-int obtenerAltura();
-int obtenerFE();
-nodoAVL *rotacionDerecha();
-nodoAVL *rotacionIzquierda();
-nodoAVL *insertarAVL(nodoAVL *, int);
-bool buscarAVL(nodoAVL*, int);
-nodoAVL *minValorNodo(nodoAVL *);
-nodoAVL *eliminarAVL(nodoAVL *, int);
-
-
 //* variables globales
 // apuntador a mi lista
 membresia *apLISTA = NULL;
 
-// apuntador al arbol
-nodoAVL *apRAIZ = NULL;
-
 //* funcion principal
 int main(void) {
-    // declaracion de variables
+  // declaracion de variables
     int opcion;
 
     // Dos funciones de inicio
     consolaBlancoTextoNegro();
     moverVentana(100, 100, 1600, 800); // Mover y cambiar el tamanio de la ventana de la consola
+    Sleep(300);
     logo();
-    Sleep(200);
+    system("cls");
 
     do {
-        Sleep(300);
-        system("cls");
+
         menu();
         cout << "Ingresa tu opcion: ";
         cin >> opcion;
         switch (opcion) {
-            case 1:
-                agregarInicio();
-                break;
-            case 2:
-                agregarFinal();
-                break;
-            case 3:
-                eliminarInicio();
-                break;
-            case 4:
-                eliminarFinal();
-                break;
-            case 5:
-                consultarLista();
-                break;
-            case 6:
-                filtrarEdad();
-                break;
-            case 7:
-                buscarNombre();
-                break;
-            case 8:
-                guardarArchivo();
-                break;
-            case 9:
-                leerArchivo();
-                break;
-            case 10:
-                ordenarElementos();
-                break;
-            case 0:
-                cout << "Seleccionaste salir" << endl;
-                break;
-            default:
-                cout << "Opcion no valida" << endl;
-                break;
+        case 1:
+            agregarInicio();
+            break;
+        case 2:
+            agregarFinal();
+            break;
+        case 3:
+            eliminarInicio();
+            break;
+        case 4:
+            eliminarFinal();
+            break;
+        case 5:
+            consultarLista();
+            break;
+        case 6:
+            filtrarEdad();
+            break;
+        case 7:
+            buscarNombre();
+            break;
+        case 8:
+            guardarArchivo();
+            break;
+        case 9:
+            leerArchivo();
+            break;
+        case 10:
+            ordenarElementos();
+            break;
+        case 0:
+            cout << "Seleccionaste salir" << endl;
+            break;
+        default:
+            cout << "Opcion no valida" << endl;
+            break;
         } // switch
-    } while (opcion);
+        } while (opcion);
 
-    return 0;
+        return 0;
 }
 
 
@@ -193,30 +168,10 @@ void agregarInicio() {
     cout << endl << endl;
     cout << "Ingresa los datos del nuevo miembro" << endl;
     cout << "====================================" << endl;
-
-
-    // Solicitar los datos
-    while(flag == false){
-        cout << "Ingrese el numero de membresia: ";
-        cin >> apNuevo->numero;
-
-        if (buscarAVL(apRAIZ, apNuevo->numero)) {    // Comprobar si el numero ya existe
-            cout << "El numero ingresado ya esta en uso. Por favor, elija otro." << endl;
-            for (int i = 0; i < 4; ++i) {
-                Beep(500, 200); // Reproduce un sonido de 500 Hz durante 300 ms
-                Sleep(166);
-            }
-        } else{
-            flag = true;
-        }
-    }
-
-    // Insertar la nueva membresia en el AVL
-    apRAIZ = insertarAVL(apRAIZ,apNuevo->numero);
-    cout << "Numero de Membresia disponible." << endl;
-
-    flag = false;
-
+    
+    // Numero del miembro
+    cout << "Numero del miembro: ";
+    cin >> apNuevo->numero;
     cin.ignore(); // Limpiar el buffer tras un cin>>
 
     // Datos personales
@@ -250,7 +205,7 @@ void agregarInicio() {
     // Datos de la membresia
     // Datos de la fecha del contrato con verificacion que ingrese la fecha como en el ejemplo
     while(flag == false){
-        cout << "Fecha del contrato (ej. 01/12/2024): ";
+        cout << "Fecha del contrato en formato DD/MM/AAAA (ej. 01/12/2024): ";
         cin.getline(tempChar, 30, '\n');
         if(tempChar[2]==47 && tempChar[5]==47){
             flag = true;
@@ -382,29 +337,10 @@ void agregarFinal(){
     cout << endl << endl;
     cout << "Ingresa los datos del nuevo miembro" << endl;
     cout << "====================================" << endl;
-
-    // Solicitar los datos
-    while(flag == false){
-        cout << "Ingrese el numero de membresia: ";
-        cin >> apNuevo->numero;
-
-        if (buscarAVL(apRAIZ, apNuevo->numero)) {    // Comprobar si el numero ya existe
-            cout << "El numero ingresado ya esta en uso. Por favor, elija otro." << endl;
-            for (int i = 0; i < 4; ++i) {
-                Beep(500, 200); // Reproduce un sonido de 500 Hz durante 300 ms
-                Sleep(166);
-            }
-        } else{
-            flag = true;
-        }
-    }
-
-    // Insertar la nueva membresia en el AVL
-    apRAIZ = insertarAVL(apRAIZ,apNuevo->numero);
-    cout << "Numero de Membresia disponible." << endl;
-
-    flag = false;
-
+    
+    // Numero del miembro
+    cout << "Numero del miembro: ";
+    cin >> apNuevo->numero;
     cin.ignore(); // Limpiar el buffer tras un cin>>
 
     // Datos personales
@@ -438,7 +374,7 @@ void agregarFinal(){
     // Datos de la membresia
     // Datos de la fecha del contrato con verificacion que ingrese la fecha como en el ejemplo
     while(flag == false){
-        cout << "Fecha del contrato (ej. 01/12/2024): ";
+        cout << "Fecha del contrato en formato DD/MM/AAAA (ej. 01/12/2024): ";
         cin.getline(tempChar, 30, '\n');
         if(tempChar[2]==47 && tempChar[5]==47){
             flag = true;
@@ -569,12 +505,9 @@ void eliminarInicio(){
         cin >> respuesta;
         if(respuesta == 1){
             // se borra
-            eliminarAVL(apRAIZ, apBorrar->numero); // Eliminamos el nodo de nuestro AVL para dejar disponible el usuario
             free(apLISTA);
             apLISTA = NULL;
-
             cout << "El unico miembro fue eliminado de la lista" << endl;
-
         } // if si lo eliminamos
         return;
     }
@@ -588,7 +521,6 @@ void eliminarInicio(){
         cin >> respuesta;
         if(respuesta == 1){
             // se borra
-            eliminarAVL(apRAIZ, apBorrar->numero);// Eliminamos el nodo de nuestro AVL para dejar disponible el usuario
             apLISTA = apLISTA -> next;
             free(apBorrar);
             cout << "El primer miembro fue eliminado de la lista" << endl;
@@ -598,7 +530,7 @@ void eliminarInicio(){
     return;
 } // eliminarInicio()
 
-//! eliminarFinal()
+//! eliminarFinal() 
 //! ==============================================================
 void eliminarFinal(){
     // 1) declarar  de variables
@@ -617,13 +549,12 @@ void eliminarFinal(){
         imprimir(apBorrar);
         cout << "Estas seguro de que quieres eliminarlo? (1 - Si, 2 - No): ";
         cin >> respuesta;
-        if(respuesta == 1){
-            // se borra
-            eliminarAVL(apRAIZ, apBorrar->numero);// Eliminamos el nodo de nuestro AVL para dejar disponible el usuario
-            free(apLISTA);
-            apLISTA = NULL;
-            cout << "El unico miembro fue eliminado de la lista" << endl;
-        } // if si lo eliminamos
+    if(respuesta == 1){
+        // se borra
+        free(apLISTA);
+        apLISTA = NULL;
+        cout << "El unico miembro fue eliminado de la lista" << endl;
+    } // if si lo eliminamos
         return;
     }
 
@@ -634,13 +565,12 @@ void eliminarFinal(){
         apPenultimo = apBorrar;
         apBorrar = apBorrar -> next;
     } // while para moverse al ultimo y penultimo nodo
-    cout << "====================================" << endl;
-    imprimir(apBorrar);
+        cout << "====================================" << endl;
+        imprimir(apBorrar);
     cout << "Estas seguro de que quieres eliminarlo? (1 - Si, 2 - No): ";
     cin >> respuesta;
     if(respuesta == 1){
         // se borra
-        eliminarAVL(apRAIZ, apBorrar->numero); // Eliminamos el nodo de nuestro AVL para dejar disponible el usuario
         free(apBorrar);
         apPenultimo -> next = NULL;
         cout << "El ultimo miembro fue eliminado de la lista" << endl;
@@ -685,7 +615,7 @@ void filtrarEdad(){
     bool encontrado = false;
     membresia *apCopia = apLISTA;
 
-    // validar que este vacia
+    // validar que esta vacia
     if (apCopia == NULL) {
         cout << "La lista esta vacia" << endl;
         return;
@@ -721,7 +651,7 @@ void buscarNombre() {
     membresia *apCopia = apLISTA;
     char nombreBuscar[99];
 
-    // validar que este vacia
+    // validar que esta vacia
     if (apCopia == NULL) {
         cout << "La lista esta vacia" << endl;
         return;
@@ -734,14 +664,14 @@ void buscarNombre() {
 
     // buscar el videojuego
     while (apCopia != NULL) {
-        if (strcmp(nombreBuscar, apCopia->nombre) == 0) {
-            cout << endl << "Resultado de busqueda de miembros" << endl;
-            cout << "====================================" << endl;
-            imprimir(apCopia);
-            return;
-        } // if si lo encontro
+    if (strcmp(nombreBuscar, apCopia->nombre) == 0) {
+        cout << endl << "Resultado de busqueda de miembros" << endl;
+        cout << "====================================" << endl;
+        imprimir(apCopia);
+        return;
+    } // if si lo encontro
 
-        apCopia = apCopia->next; //? aqui se guarda la direccion de memoria del siguiente
+    apCopia = apCopia->next; //? aqui se guarda la direccion de memoria del siguiente
     }                    // while
     cout << "El miembro con el nombre: " << nombreBuscar << " no fue localizado" << endl;
     for (int i = 0; i < 4; ++i) {
@@ -912,6 +842,7 @@ void ordenarElementos(void) {
     return;
 } // ordenarLista
 
+
 //! imprimir()
 //! ==============================================================
 void imprimir(membresia *apCopia){
@@ -920,7 +851,7 @@ void imprimir(membresia *apCopia){
     cout << "Numero de miembro: " << apCopia->numero << endl;
     // Datos personales
     cout << "Nombre completo: " << apCopia->nombre << endl;
-    cout << "Edad: " << apCopia->edad << " anios" << endl;
+    cout << "Edad: " << apCopia->edad << " axos" << endl;
     cout << "Telefono: " << apCopia->telefono << endl;
     cout << "Correo: " << apCopia->correo << endl;
     // Datos de la membresia
@@ -942,270 +873,19 @@ void menu(void) {
     cout << "Listado de miembros del Club deportivo Alta Vista" << endl;
     cout << "=================================================" << endl;
     cout << "1. Agregar un miembro al inicio de la lista" << endl; //* corregido
-    cout << "2. Agregar un miembro al final de la lista" << endl; // Corregido
-    cout << "3. Eliminar al miembro al inicio de la lista" << endl; // Corregido
-    cout << "4. Eliminar al miembro al final de la lista" << endl; // corregido
+    cout << "2. Agregar un miembro al final de la lista" << endl; //* Corregido
+    cout << "3. Eliminar al miembro al inicio de la lista" << endl; //* Corregido
+    cout << "4. Eliminar al miembro al final de la lista" << endl; //* corregido
     cout << "5. Consultar el listado de miembros" << endl;  //* corregido
-    cout << "6. Filtrar Miembros por edad" << endl;        // Corregido
+    cout << "6. Filtrar Miembros por edad" << endl;        //* Corregido
     cout << "7. Buscar a un miembro por su nombre" << endl; //* corregido
-    cout << "8. Guardar los datos en la lista en un archivo (respaldar)" << endl;
-    cout << "9. Recuperar los datos del archivo (mostrar en pantalla lo almacenado en el archivo)" << endl;
-    cout << "10.Odenar los elementos de la lista por un dato especifico (metodo ordenamiento)" << endl;
+    cout << "8. Guardar los datos en la lista en un archivo" << endl;
+    cout << "9. Recuperar los datos del archivo" << endl;
+    cout << "10.Odenar los elementos de la lista por un dato especifico" << endl;
     cout << "0. Salir" << endl;
 
     return;
 } // menu()
-
-
-//========================================================[Funciones del arbol AVL]============================================================
-
-//! obtenerAltura()
-//! ==============================================================
-int obtenerAltura(nodoAVL *nodo) {
-    if (nodo == NULL) return 0;
-    return nodo->altura;
-} // obtenerAltura
-
-//! obtenerFE()
-//! ==============================================================
-int obtenerFE(nodoAVL *nodo) {
-    if (nodo == NULL) return 0;
-    return obtenerAltura(nodo->izquierda) - obtenerAltura(nodo->derecha);
-} // obtenerFE()
-
-//! rotacionDerecha()
-//! ==============================================================
-nodoAVL *rotacionDerecha(nodoAVL *y) {
-    nodoAVL *x = y->izquierda;
-    nodoAVL *T2 = x->derecha;
-    int alturaIzquierdaY = 0;
-    int alturaDerechaY = 0;
-
-    // Realizar la rotacion
-    x->derecha = y;
-    y->izquierda = T2;
-
-    // Actualizar las alturas de y y x
-    alturaIzquierdaY = obtenerAltura(y->izquierda);
-    alturaDerechaY = obtenerAltura(y->derecha);
-    if (alturaIzquierdaY > alturaDerechaY) {
-        y->altura = alturaIzquierdaY + 1;
-    } else {
-        y->altura = alturaDerechaY + 1;
-    }
-
-    int alturaIzquierdaX = obtenerAltura(x->izquierda);
-    int alturaDerechaX = obtenerAltura(x->derecha);
-    if (alturaIzquierdaX > alturaDerechaX) {
-        x->altura = alturaIzquierdaX + 1;
-    } else {
-        x->altura = alturaDerechaX + 1;
-    }
-
-    // Devolver el nuevo nodo raiz
-    return x;
-} // rotacionDerecha()
-
-//! rotacionIzquierda()
-//! ==============================================================
-nodoAVL *rotacionIzquierda(nodoAVL *x) {
-    nodoAVL *y = x->derecha;
-    nodoAVL *T2 = y->izquierda;
-
-    // Realizar la rotacion
-    y->izquierda = x;
-    x->derecha = T2;
-
-    // Actualizar las alturas de x y y
-    int alturaIzquierdaX = obtenerAltura(x->izquierda);
-    int alturaDerechaX = obtenerAltura(x->derecha);
-    if (alturaIzquierdaX > alturaDerechaX) {
-        x->altura = alturaIzquierdaX + 1;
-    } else {
-        x->altura = alturaDerechaX + 1;
-    }
-
-    int alturaIzquierdaY = obtenerAltura(y->izquierda);
-    int alturaDerechaY = obtenerAltura(y->derecha);
-    if (alturaIzquierdaY > alturaDerechaY) {
-        y->altura = alturaIzquierdaY + 1;
-    } else {
-        y->altura = alturaDerechaY + 1;
-    }
-
-    // Devolver el nuevo nodo raiz
-    return y;
-} // rotacionIzquierda ()
-
-//! buscarAVL()
-//! ==============================================================
-bool buscarAVL(nodoAVL *subRaiz,int numero) {
-    if (subRaiz == NULL) {
-        return false;  // No encontrado
-    }
-    if (subRaiz->usados == numero) {
-        return true;  // Encontrado
-    }
-    if (numero < subRaiz->usados) {
-        return buscarAVL(subRaiz->izquierda, numero);
-    } else {
-        return buscarAVL(subRaiz->derecha, numero);
-    }
-} // buscarAVL()
-
-//! insertarAVL()
-//! ==============================================================
-nodoAVL *insertarAVL(nodoAVL *nodo, int nuevoMiembro) {
-    // Caso base: Crear un nuevo nodo
-    if (nodo == NULL) {
-        nodoAVL *nuevoNodo = (nodoAVL *)malloc(sizeof(nodoAVL));
-
-        if (nuevoNodo == NULL) {
-            cout << ("No hay emoria sufciente para agregar un nuevo numero");
-            return NULL;
-        }
-        nuevoNodo->usados = nuevoMiembro;
-        nuevoNodo->altura = 1;
-        nuevoNodo->izquierda = NULL;
-        nuevoNodo->derecha = NULL;
-        return nuevoNodo;
-    }
-
-    // Insertar en el subrbol izquierdo o derecho segun el numero
-    if (nuevoMiembro < nodo->usados) {
-        nodo->izquierda = insertarAVL(nodo->izquierda, nuevoMiembro);
-    } else if (nuevoMiembro > nodo->usados) {
-        nodo->derecha = insertarAVL(nodo->derecha, nuevoMiembro);
-    } else {
-        cout << "El numero " << nuevoMiembro << "ya esta en uso";
-        return nodo;  // No insertar duplicados
-    }
-
-    // Actualizar la altura del nodo actual
-    int alturaIzquierda = obtenerAltura(nodo->izquierda);
-    int alturaDerecha = obtenerAltura(nodo->derecha);
-    nodo->altura = (alturaIzquierda > alturaDerecha ? alturaIzquierda : alturaDerecha) + 1;
-
-    // Obtener el factor de balance
-    int balance = obtenerFE(nodo);
-
-    // Caso 1: Desbalanceo por la izquierda (rotacion derecha)
-    if (balance > 1 && nuevoMiembro < nodo->izquierda->usados) {
-        return rotacionDerecha(nodo);
-    }
-
-    // Caso 2: Desbalanceo por la derecha (rotacion izquierda)
-    if (balance < -1 && nuevoMiembro > nodo->derecha->usados) {
-        return rotacionIzquierda(nodo);
-    }
-
-    // Caso 3: Desbalanceo izquierda-derecha (rotacion izquierda-derecha)
-    if (balance > 1 && nuevoMiembro > nodo->izquierda->usados) {
-        nodo->izquierda = rotacionIzquierda(nodo->izquierda);
-        return rotacionDerecha(nodo);
-    }
-
-    // Caso 4: Desbalanceo derecha-izquierda (rotacion derecha-izquierda)
-    if (balance < -1 && nuevoMiembro < nodo->derecha->usados) {
-        nodo->derecha = rotacionDerecha(nodo->derecha);
-        return rotacionIzquierda(nodo);
-    }
-
-    return nodo;
-} // insertarAVL()
-
-//! eliminarAVL()
-//! ==============================================================
-nodoAVL *eliminarAVL(nodoAVL *raiz, int numero) {
-    // Caso base: el arbol esta vacio
-    if (raiz == NULL) {
-        return raiz;
-    }
-
-    // Buscar el nodo a eliminar
-    if (numero < raiz->usados) {
-        raiz->izquierda = eliminarAVL(raiz->izquierda, numero);
-    } else if (numero > raiz->usados) {
-        raiz->derecha = eliminarAVL(raiz->derecha, numero);
-    } else {
-        // El nodo ha sido encontrado
-
-        // Caso 1: Nodo con solo un hijo o sin hijos
-        if (raiz->izquierda == NULL || raiz->derecha == NULL) {
-            nodoAVL *temp = raiz->izquierda ? raiz->izquierda : raiz->derecha;
-
-            // Sin hijos
-            if (temp == NULL) {
-                temp = raiz;
-                raiz = NULL;
-            } else {
-                // Con un hijo
-                *raiz = *temp;
-            }
-            free(temp);
-        } else {
-            // Caso 2: Nodo con dos hijos
-            nodoAVL *temp = minValorNodo(raiz->derecha);
-
-            // Copiar los datos del nodo en sucesor en el nodo actual
-            raiz->usados = temp->usados;
-
-            // Eliminar el sucesor en el subarbol derecho
-            raiz->derecha = eliminarAVL(raiz->derecha, temp->usados);
-        }
-    }
-
-    // Si el arbol tenia solo un nodo, devolver
-    if (raiz == NULL) {
-        return raiz;
-    }
-
-    // Actualizar la altura del nodo actual
-    int alturaIzquierda = obtenerAltura(raiz->izquierda);
-    int alturaDerecha = obtenerAltura(raiz->derecha);
-    raiz->altura = (alturaIzquierda > alturaDerecha ? alturaIzquierda : alturaDerecha) + 1;
-
-    // Obtener el factor de balance
-    int balance = obtenerFE(raiz);
-
-    // Verificar y aplicar las rotaciones necesarias
-
-    // Caso 1: Desbalanceo por la izquierda
-    if (balance > 1 && obtenerFE(raiz->izquierda) >= 0) {
-        return rotacionDerecha(raiz);
-    }
-
-    // Caso 2: Desbalanceo por la izquierda-derecha
-    if (balance > 1 && obtenerFE(raiz->izquierda) < 0) {
-        raiz->izquierda = rotacionIzquierda(raiz->izquierda);
-        return rotacionDerecha(raiz);
-    }
-
-    // Caso 3: Desbalanceo por la derecha
-    if (balance < -1 && obtenerFE(raiz->derecha) <= 0) {
-        return rotacionIzquierda(raiz);
-    }
-
-    // Caso 4: Desbalanceo por la derecha-izquierda
-    if (balance < -1 && obtenerFE(raiz->derecha) > 0) {
-        raiz->derecha = rotacionDerecha(raiz->derecha);
-        return rotacionIzquierda(raiz);
-    }
-
-    return raiz;
-} // eliminarAVL()
-
-//! ninValorNodo()
-//! ==============================================================
-nodoAVL *minValorNodo(nodoAVL *nodo) {
-    nodoAVL *actual = nodo;
-
-    // Encontrar el nodo con el valor mas bajo (mas a la izquierda)
-    while (actual->izquierda != NULL) {
-        actual = actual->izquierda;
-    }
-    return actual;
-} //minValorNodo()
 
 
 //================================================================[Arte ASCII y consola]=======================================================
